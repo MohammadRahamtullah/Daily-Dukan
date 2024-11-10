@@ -73,9 +73,60 @@
         <footer>
             <p>&copy; 2024 Daily Dukan. All rights reserved.</p>
         </footer>
+    <script>
+        // Wait for the DOM content to fully load
+document.addEventListener("DOMContentLoaded", function() {
+    // Get form elements
+    const contactForm = document.querySelector("form");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const subjectInput = document.getElementById("subject");
+    const messageInput = document.getElementById("message");
+
+    // Handle form submission
+    contactForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting by default
+
+        // Validate inputs
+        if (validateForm()) {
+            // Display a success message
+            alert("Thank you, your message has been sent successfully!");
+            contactForm.reset(); // Clear the form
+        }
+    });
+
+     // Form validation function
+    function validateForm() {
+        let isValid = true;
+
+        // Validate name
+        if (nameInput.value.trim() === "") {
+            alert("Please enter your name.");
+            nameInput.focus();
+            isValid = false;
+        }
+
+        // Validate email format
+        else if (!isValidEmail(emailInput.value)) {
+            alert("Please enter a valid email address.");
+            emailInput.focus();
+            isValid = false;
+        }
+ return isValid;
+    }
+
+    // Email validation using regular expression
+    function isValidEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
+});
+        
+
+            
+    </script>
     
-    </body>
-    </html>
+    
     
 </body>
 </html>
